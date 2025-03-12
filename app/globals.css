@@ -5,6 +5,16 @@
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: 'sourcesans';
+  src: url('/fonts/sourcesans.ttf');
+}
+
+@font-face {
+  font-family: 'helvetica';
+  src: url('/fonts/helvetica.ttf');
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
