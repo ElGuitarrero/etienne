@@ -1,6 +1,6 @@
 "use client"
 
-import { useScrollAnimation } from "../lib/animations";
+import { useScrollAnimation } from "@/app/lib/animations";
 import { motion } from "framer-motion";
 import { useMemo, useCallback } from "react";
 
@@ -58,7 +58,7 @@ const Biografia = () => {
     );
 
     return (
-        <div className="w-screen p-5 flex flex-col gap-5 md:flex-row-reverse md:p-20 md:gap-15 h-auto md:h-[150vh]">
+        <div className="w-screen p-5 flex flex-col gap-5 md:flex-row-reverse md:p-20 md:gap-15 h-auto md:h-[120vh]">
             {/* <div className="w-full md:w-1/2 h-64 md:h-full bg-[url('/background/fondo-landing2.jpg')] bg-cover bg-center rounded-lg"></div> */}
             <AnimatedPhoto/>
             <div className="w-full md:w-1/2 text-[1rem] md:text-[1.3rem] font-[helvetica] flex flex-col justify-center gap-5 font-light">
