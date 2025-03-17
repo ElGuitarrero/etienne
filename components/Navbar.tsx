@@ -10,9 +10,10 @@ const navbarVariants = {
 
 interface NavbarProps {
   animate?: boolean;
+  path?: string;
 }
 
-function Navbar({ animate = false }: NavbarProps) {
+function Navbar({ animate = false, path }: NavbarProps) {
   const links = useMemo(
     () => [
       { nombre: "home", link: "/" },
@@ -37,13 +38,20 @@ function Navbar({ animate = false }: NavbarProps) {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 w-full bg-white shadow-md"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-(--background)/30 border-b border-(--background)/10"
       {...animationProps}
     >
       <ul className="flex justify-around p-4">
         {links.map((item) => (
           <li key={item.nombre}>
-            <a href={item.link} className="text-xl hover:text-gray-700">
+            <a
+              href={item.link}
+              className={`text-xl text-(--foreground) hover:text-gray-400 transition-colors duration-200 ${
+                path === item.link
+                  ? "px-3 rounded-xs border-b-2 border-(--foreground)"
+                  : ""
+              }`}
+            >
               {item.nombre}
             </a>
           </li>

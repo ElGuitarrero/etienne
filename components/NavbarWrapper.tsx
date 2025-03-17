@@ -29,5 +29,5 @@ export default function NavbarWrapper() {
 
   if (!showNavbar) return null;
   
-  return <Navbar animate={isLandingPage} />;
+  return <Navbar animate={isLandingPage} path={pathname as string} />;
 }
