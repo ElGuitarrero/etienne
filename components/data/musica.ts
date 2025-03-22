@@ -12,11 +12,11 @@ interface Music {
 export const MUSICA: Music[] = [
     {
         id: 0,
-        nombre: "because of you",
-        appleLink: "https://music.apple.com/mx/album/because-of-you-single/1753345116",
+        nombre: "Closer",
+        appleLink: "https://open.spotify.com/track/2aSE5j7ZdZrLkQ2Ip1XJCc?si=3f3ef91b1d0b41f1",
         spotifyLink: "https://open.spotify.com/track/5UcM8Ch1ZFDOTjgfivQvvw?si=81ecdbe67e384e86",
-        cover_art: "https://i.scdn.co/image/ab67616d0000b273cdbc9b8a54e9adc6391b0657",
-        youtubeLink: "https://www.youtube.com/watch?v=CTTjLzW7LX8",
+        cover_art: "https://i.scdn.co/image/ab67616d00001e025110745800fd368157784254",
+        youtubeLink: "https://youtu.be/IX239CRlQZw?si=HVfNlCs5kOdi4ycx",
     },
     {
         id: 1,
