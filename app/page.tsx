@@ -6,8 +6,12 @@ import Show from "@/components/Show";
 
 export default function Home() {
 
+  
 
   return (
+
+    // Hola
+    // <Landing/>
     <div className="overflow-x-hidden">
       {/* Hola */}
       <Landing/>

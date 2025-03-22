@@ -25,8 +25,10 @@ const Landing: React.FC = () => {
       className="bg-[url('/background/roja.png')] md:bg-[url('/background/fondo-landing1.jpg')] 
                     md:bg-center md:bg-fixed
                     bg-cover bg-no-repeat h-screen flex flex-col 
-                    justify-around md:justify-center items-center overflow-y-hidden  max-md:gap-30"
+                    justify-start md:justify-center items-center overflow-y-hidden  max-md:gap-50"
     >
+
+      {/* Logo */}
       <div className="w-4/5 h-3/10 flex">
         <div className="w-1/2 h-full hidden md:inline"></div>
         <motion.div
@@ -44,7 +46,7 @@ const Landing: React.FC = () => {
             <li key={item.nombre}>
               <a
                 href={item.link}
-                className="text-2xl md:text-3xl hover:text-[rgb(240,40,15)]"
+                className="text-2xl md:text-3xl hover:text-[rgb(240,40,15)] transition-all duration-400"
               >
                 {item.nombre}
               </a>
@@ -52,6 +54,7 @@ const Landing: React.FC = () => {
           ))}
         </ul>
       </motion.div>
+      
     </div>
   );
 };
