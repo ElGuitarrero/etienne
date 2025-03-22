@@ -11,11 +11,11 @@ const animationProps = {
 const Landing: React.FC = () => {
   const links = useMemo(
     () => [
-      { nombre: "bio", link: "/bio" },
-      { nombre: "music", link: "/music" },
-      { nombre: "photos", link: "/photos" },
-      { nombre: "contact", link: "/contact" },
-      { nombre: "send me music", link: "/send" },
+      { nombre: "BIO", link: "/bio" },
+      { nombre: "MUSIC", link: "/music" },
+      { nombre: "PHOTOS", link: "/photos" },
+      { nombre: "CONTACT", link: "/contact" },
+      { nombre: "SEND ME MUSIC", link: "/send" },
     ],
     []
   );
@@ -41,12 +41,12 @@ const Landing: React.FC = () => {
       {/* Lista de nombres */}
       <motion.div className="w-8/10 flex justify-end" {...animationProps}>
         <div className="w-1/2 hidden md:inline"></div>
-        <ul className="w-full md:w-1/2 gap-1 text-white lg:text-black flex flex-col items-center font-[sourcesans] font-medium">
+        <ul className="w-full md:w-1/2 gap-1 text-white lg:text-black flex flex-col items-start md:items-center max-md:pl-5 font-[sourcesans] font-medium">
           {links.map((item) => (
             <li key={item.nombre}>
               <a
                 href={item.link}
-                className="text-2xl md:text-3xl hover:text-[rgb(240,40,15)] transition-all duration-400"
+                className="text-2xl font-[helvetica] font-thin md:text-3xl hover:text-[rgb(240,40,15)] transition-all duration-400"
               >
                 {item.nombre}
               </a>

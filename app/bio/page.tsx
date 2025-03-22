@@ -9,7 +9,9 @@ const Index = () => {
     }, [])
     
     return (
-        <Biografia/>
+        <div className="mt-20 ">
+            <Biografia/>
+        </div>
     )
 }
 

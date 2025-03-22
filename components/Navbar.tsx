@@ -21,11 +21,11 @@ function Navbar({ animate = false, path }: NavbarProps) {
   const links = useMemo(
     () => [
       // { nombre: "home", link: "/" },
-      { nombre: "bio", link: "/bio" },
-      { nombre: "music", link: "/music" },
-      { nombre: "photos", link: "/photos" },
-      { nombre: "contact", link: "/contact" },
-      { nombre: "send me music", link: "/send" },
+      { nombre: "BIO", link: "/bio" },
+      { nombre: "MUSIC", link: "/music" },
+      { nombre: "PHOTOS", link: "/photos" },
+      { nombre: "CONTACT", link: "/contact" },
+      { nombre: "SEND ME MUSIC", link: "/send" },
     ],
     []
   );
@@ -81,7 +81,7 @@ function Navbar({ animate = false, path }: NavbarProps) {
             <li key={item.nombre}>
               <a
                 href={item.link}
-                className={`text-xl text-(--foreground) hover:text-gray-400 transition-colors duration-200 ${
+                className={`text-md text-(--foreground) hover:text-gray-400 transition-colors duration-200 ${
                   path === item.link
                     ? "px-3 rounded-xs border-b-2 border-(--foreground)"
                     : ""

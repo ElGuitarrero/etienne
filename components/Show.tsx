@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Music from "./Music";
 import { AnimatedElement } from "@/app/lib/animations";
 import { MUSICA } from "./data/musica";
+import { FaYoutube, FaApple, FaSpotify } from "react-icons/fa";
 
 // Define interfaces instead of type for better extensibility
 interface Music {
@@ -93,7 +94,11 @@ const MusicCard: React.FC<Music> = ({
   appleLink,
   spotifyLink,
   youtubeLink,
-}) => (
+}) => {
+  const size = 35;
+  const estilos = "text-black dark:text-white hover:opacity-70 transition-all duration-300";
+
+  return (
   <div className="flex flex-row gap-5 justify-center items-center mx-10 transition-all duration-300">
     {/* Imagen */}
     <div className="w-1/2 flex justify-center">
@@ -110,33 +115,23 @@ const MusicCard: React.FC<Music> = ({
       {/* <h2 className="text-2xl font-bold text-(--foreground)">{album}</h2> */}
       {/* <a href={link}>Spotify</a> */}
 
-      <div className="flex gap-8">
+
+      
+      <div className="flex gap-8 items-center">
         <a href={spotifyLink} target="_blank" rel="noopener noreferrer">
-          <img
-            src="/logos/spotify.svg"
-            alt="Spotify"
-            className="w-20 h-20 hover:opacity-80"
-          />
+          <FaSpotify size={size} className={estilos} />
         </a>
         <a href={appleLink} target="_blank" rel="noopener noreferrer">
-          <img
-            src="/logos/apple-music.svg"
-            alt="Apple Music"
-            className="w-20 h-20 hover:opacity-80"
-          />
+          <FaApple size={size+5} className={`${estilos} pb-1`} />
         </a>
         <a href={youtubeLink} target="_blank" rel="noopener noreferrer">
-          <img
-            src="/logos/youtube.svg"
-            alt="YouTube"
-            className="w-20 h-20 hover:opacity-80"
-          />
+          <FaYoutube size={size} className={estilos} />
         </a>
       </div>
       {/* <audio controls src={preview} className="w-full rounded-lg" /> */}
     </div>
   </div>
-);
+);}
 
 const Show: React.FC = () => {
   const [data, setData] = useState<Music[]>([]);
