@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 import Music from "./Music";
 import { AnimatedElement } from "@/app/lib/animations";

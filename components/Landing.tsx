@@ -13,7 +13,7 @@ const Landing: React.FC = () => {
     () => [
       { nombre: "BIO", link: "/bio" },
       { nombre: "MUSIC", link: "/music" },
-      { nombre: "PHOTOS", link: "/photos" },
+      // { nombre: "PHOTOS", link: "/photos" },
       { nombre: "CONTACT", link: "/contact" },
       { nombre: "SEND ME MUSIC", link: "/send" },
     ],
@@ -22,7 +22,7 @@ const Landing: React.FC = () => {
 
   return (
     <div
-      className="bg-[url('/background/roja.png')] md:bg-[url('/background/fondorojo.png')] 
+      className="bg-[url('/background/roja.png')] md:bg-[url('/background/fondorojo.png')] bg-center 
                     md:bg-center md:bg-fixed
                     bg-cover bg-no-repeat h-screen flex flex-col 
                     justify-start md:justify-center items-center overflow-y-hidden  max-md:gap-50"
@@ -35,7 +35,7 @@ const Landing: React.FC = () => {
           {...animationProps}
           className="
                     md:w-1/2 w-full h-full flex justify-center items-center"
-        ><img src="/logos/blanco.png" alt="" className="w-1/3"/></motion.div>
+        ><img src="/logos/blanco.png" alt="" className="w-5/10"/></motion.div>
       </div>
 
       {/* <div className=" md:hidden h-10"></div> */}
@@ -48,7 +48,7 @@ const Landing: React.FC = () => {
         <li key={item.nombre} className="flex items-center">
           <a
             href={item.link}
-            className="text-sm md:text-2xl font-[helvetica] font-thin md:text-lg hover:opacity-40 transition-all duration-400"
+            className="text-sm md:text-2xl font-[helvetica] font-bold md:text-lg hover:opacity-40 transition-all duration-400"
           >
             {item.nombre}
           </a>

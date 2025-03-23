@@ -23,7 +23,7 @@ function Navbar({ animate = false, path }: NavbarProps) {
       // { nombre: "home", link: "/" },
       { nombre: "BIO", link: "/bio" },
       { nombre: "MUSIC", link: "/music" },
-      { nombre: "PHOTOS", link: "/photos" },
+      // { nombre: "PHOTOS", link: "/photos" },
       { nombre: "CONTACT", link: "/contact" },
       { nombre: "SEND ME MUSIC", link: "/send" },
     ],
