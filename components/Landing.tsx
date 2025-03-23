@@ -22,35 +22,40 @@ const Landing: React.FC = () => {
 
   return (
     <div
-      className="bg-[url('/background/roja.png')] md:bg-[url('/background/fondo-landing1.jpg')] 
+      className="bg-[url('/background/roja.png')] md:bg-[url('/background/fondorojo.png')] 
                     md:bg-center md:bg-fixed
                     bg-cover bg-no-repeat h-screen flex flex-col 
                     justify-start md:justify-center items-center overflow-y-hidden  max-md:gap-50"
     >
 
       {/* Logo */}
-      <div className="w-4/5 h-3/10 flex">
+      <div className="w-4/5 max-md:h-3/10 flex">
         <div className="w-1/2 h-full hidden md:inline"></div>
         <motion.div
           {...animationProps}
-          className="bg-[url('/logos/blanco.png')] lg:bg-[url('/logos/negro.png')] 
-                    md:w-1/2 w-full h-full bg-contain bg-center bg-no-repeat"
-        />
+          className="
+                    md:w-1/2 w-full h-full flex justify-center items-center"
+        ><img src="/logos/blanco.png" alt="" className="w-1/3"/></motion.div>
       </div>
+
+      {/* <div className=" md:hidden h-10"></div> */}
 
       {/* Lista de nombres */}
       <motion.div className="w-8/10 flex justify-end" {...animationProps}>
         <div className="w-1/2 hidden md:inline"></div>
-        <ul className="w-full md:w-1/2 gap-1 text-white lg:text-black flex flex-col items-start md:items-center max-md:pl-5 font-[sourcesans] font-medium">
-          {links.map((item) => (
-            <li key={item.nombre}>
-              <a
-                href={item.link}
-                className="text-2xl font-[helvetica] font-thin md:text-3xl hover:text-[rgb(240,40,15)] transition-all duration-400"
-              >
-                {item.nombre}
-              </a>
-            </li>
+        <ul className="w-full md:w-1/2 text-white flex flex-row items-center justify-center md:items-center pt-30">
+          {links.map((item, index) => (
+        <li key={item.nombre} className="flex items-center">
+          <a
+            href={item.link}
+            className="text-sm md:text-2xl font-[helvetica] font-thin md:text-lg hover:opacity-40 transition-all duration-400"
+          >
+            {item.nombre}
+          </a>
+          {index < links.length - 1 && (
+            <span className="mx-2 text-lg font-thin">•</span>
+          )}
+        </li>
           ))}
         </ul>
       </motion.div>
