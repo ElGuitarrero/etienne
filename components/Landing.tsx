@@ -15,7 +15,8 @@ const Landing: React.FC = () => {
       { nombre: "MUSIC", link: "/music" },
       // { nombre: "PHOTOS", link: "/photos" },
       { nombre: "CONTACT", link: "/contact" },
-      { nombre: "SEND ME MUSIC", link: "/send" },
+      // { nombre: "SEND", link: "https://tstack.app/danieletienne" },
+      { nombre: "PLAYLISTS", link: "/playlists" },
     ],
     []
   );

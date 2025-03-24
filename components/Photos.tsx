@@ -49,7 +49,7 @@ const Photos: React.FC = () => {
 
             {/* Fotos y redes sociales */}
             <div
-                className="bg-[url('/background/social.png')] bg-fixed bg-cover bg-center bg-no-repeat h-screen flex flex-col 
+                className="bg-[url('/background/social.png')] bg-fixed bg-cover md:bg-center bg-no-repeat h-screen flex flex-col 
                  justify-center items-center text-white"
             >
                 {/* Título */}
@@ -74,6 +74,18 @@ const Photos: React.FC = () => {
                         </a>
                     ))}
                 </div>
+                
+                {/* Link to send music */}
+                <div className="mt-10">
+                    <a
+                        href="https://tstack.app/danieletienne"
+                        className="pointer px-6 py-3 bg-white text-black text-lg font-semibold rounded-lg opacity-80 hover:opacity-100 transition-all duration-300 inline-block text-center"
+                        target="_blank"
+                    >
+                        Send Me Music
+                    </a>
+                </div>
+                
             </div>
 
             {/* Contact and Subscription to newsletter */}

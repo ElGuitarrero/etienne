@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 import BentoBox from "./BentoBox";
 
 // interface contactDataProps {
@@ -8,30 +8,37 @@ import BentoBox from "./BentoBox";
 //   file?: File;
 // }
 
-function Music() {
-  //   const [data, setData] = useState<contactDataProps>();
+// function Music() {
+//   //   const [data, setData] = useState<contactDataProps>();
 
 
 
 
 
-  return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="w-full md:w-1/2 px-5 gap-5 flex flex-col">
+//   return (
+//     <div className="w-screen h-screen flex items-center justify-center">
+//       <div className="w-full md:w-1/2 px-5 gap-5 flex flex-col">
 
-        <h1 className="font-[helvetica] text-5xl font-bold text-center text-(--foreground) mb-8">
-          Send me music
-        </h1>
-        <BentoBox>
-          <Formulario />
-        </BentoBox>
-      </div>
-    </div>
-  );
-}
+//         <h1 className="font-[helvetica] text-5xl font-bold text-center text-(--foreground) mb-8">
+//           Send me music
+//         </h1>
+//         <BentoBox>
+//             <div className="w-full h-fit bg-(--background) flex flex-col items-center justify-center">
+//               <button
+//                 className="mt-2 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
+//                 onClick={() => alert("Send me music")}
+//               >
+//                 Send me music
+//               </button>
+//             </div>
+//         </BentoBox>
+//       </div>
+//     </div>
+//   );
+// }
 
 
-const Formulario = () => {
+/* const Formulario = () => {
 
   const handleSend = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -169,6 +176,4 @@ const Formulario = () => {
       </button>
     </form>
   )
-}
-
-export default Music;
+} */

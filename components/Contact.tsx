@@ -1,8 +1,9 @@
 import BentoBox from "./BentoBox";
+import { useState } from "react";
 
 const Contact = () => {
     return (
-        <div className="w-full h-fit bg-(--background) flex flex-col items-center justify-center">
+        <div className="w-full h-fit bg-(--background) flex flex-col items-center justify-center mb-20">
             <div className="w-full h-fit px-5 xl:px-50 gap-5 flex flex-col">
 
                 {/* Titulo */}
@@ -44,10 +45,10 @@ const Information = () => {
                 <p className="text-lg">
                     <strong className="font-bold">AYITA</strong> Brett Fischer (
                     <a
-                        href="mailto:brett@ayita.com"
+                        href="mailto:artistcare@terriblygood.info"
                         className=" hover:underline"
                     >
-                        brett@ayita.com
+                        artistcare@terriblygood.info
                     </a>
                     )
                 </p>
@@ -58,10 +59,10 @@ const Information = () => {
                 <h2 className="text-3xl font-bold">Bookings</h2>
                 <p className="text-lg">
                     <a
-                        href="mailto:merch@followthefishtv.com"
+                        href="mailto:mgmt@danieletienne.com"
                         className=" hover:underline"
                     >
-                        merch@followthefishtv.com
+                        mgmt@danieletienne.com
                     </a>
                 </p>
             </div>
@@ -71,11 +72,42 @@ const Information = () => {
 }
 
 const ManagementBookings = () => {
+    const [subscripcion, setSubscripcion] = useState<boolean>(false)
+
+    const handleSend = async (event: React.FormEvent) => {
+        event.preventDefault();
+
+        const name = (document.getElementById("name") as HTMLInputElement)?.value;
+        const email = (document.getElementById("email") as HTMLInputElement)?.value;
+        const phone = (document.getElementById("phone") as HTMLInputElement)?.value;
+        const comment = (document.getElementById("comment") as HTMLInputElement)?.value;
+
+        const response = await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, comment })
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+            console.log(data.message || "Message sent successfully!");
+        } else {
+            console.log(data.message || "An error occurred while sending the message.");
+        }
+
+        if (subscripcion) {
+            handleSubscription(email);
+        }
+
+    }
+
+
     return (
         <div className="space-y-10">
 
             <form className="grid grid-cols-1 gap-6">
-                <h2 className="text-3xl">Send me a message</h2>
+                <h2 className="text-3xl font-bold">Send me a message</h2>
 
                 {/* Name and Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -129,10 +161,27 @@ const ManagementBookings = () => {
                     />
                 </div>
 
+                <div className="flex items-center gap-2">
+                    <input
+                        type="checkbox"
+                        name="subscribe"
+                        id="subscribe"
+                        onChange={(e) => setSubscripcion(e.target.checked)}
+                        className="w-5 h-5 text-(--foreground) border-gray-300 rounded focus:ring-2 focus:ring-black focus:outline-none transition duration-200"
+                    />
+                    <label
+                        htmlFor="subscribe"
+                        className="font-semibold text-gray-700"
+                    >
+                        Subscribe to my newsletter
+                    </label>
+                </div>
+
                 {/* Send */}
                 <button
+                    onClick={handleSend}
                     type="submit"
-                    className="mt-6 w-full px-6 py-3 bg-(--background) border-1 border-gray-300 text-(--foreground) font-semibold rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                    className="mt-6 w-full px-6 py-3 bg-(--foreground) border-1 border-gray-300 text-(--background) font-semibold rounded-lg opacity-90 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
                 >
                     Send
                 </button>
@@ -142,6 +191,9 @@ const ManagementBookings = () => {
 };
 
 const Newsletter = () => {
+    const [email, setEmail] = useState<string>()
+
+
     return (
         <div className="space-y-6 text-(--foreground)">
 
@@ -149,14 +201,14 @@ const Newsletter = () => {
             <div>
                 <h1 className="text-3xl font-bold ">Subscribe to our Newsletter</h1>
             </div>
-            
+
             {/* Descripcion */}
             <div>
                 <p className="">
                     Stay up to date with the latest news and updates
                 </p>
             </div>
-            
+
             {/* Formulario */}
             <form className="flex flex-col md:flex-row gap-4">
 
@@ -166,6 +218,7 @@ const Newsletter = () => {
                         Email
                     </label>
                     <input
+                        onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         id="email"
                         name="email"
@@ -176,16 +229,39 @@ const Newsletter = () => {
                 {/* Submit */}
                 <div className="flex flex-col justify-end">
                     <button
+                        onClick={() => handleSubscription(email as string)}
                         type="submit"
-                        className="mt-2 md:mt-0 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                        className="mt-6 w-full px-6 py-3 bg-(--foreground) border-1 border-gray-300 text-(--background) font-semibold rounded-lg opacity-90 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
                     >
                         Subscribe
                     </button>
+                    {/* <p></p> */}
                 </div>
 
             </form>
         </div>
     );
 };
+
+const handleSubscription = async (email: string) => {
+
+    const response = fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+    })
+
+
+    response.then(async (res) => {
+        const data = await res.json();
+        if (res.ok) {
+            alert(data.message || "Subscription successful!");
+        } else {
+            alert(data.message || "An error occurred during subscription.");
+        }
+    });
+
+
+}
 
 export default Contact;
