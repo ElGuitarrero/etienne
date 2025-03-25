@@ -6,6 +6,7 @@ const sql = neon(process.env.DATABASE_URL!); // Asegúrate de que DATABASE_URL e
 export async function POST(req: NextRequest) {
     try {
         const { email } = await req.json();
+        // console.log(email)
 
         // Validar el email
         if (!email || !email.includes('@')) {

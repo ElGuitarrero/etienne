@@ -1,7 +1,13 @@
+"use client"
 import BentoBox from "./BentoBox";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Contact = () => {
+
+    const router = useRouter()
+    
+
     return (
         <div className="w-full h-fit bg-(--background) flex flex-col items-center justify-center mb-20">
             <div className="w-full h-fit px-5 xl:px-50 gap-5 flex flex-col">
@@ -21,12 +27,12 @@ const Contact = () => {
 
                     {/* Send me a message */}
                     <BentoBox>
-                        <ManagementBookings />
+                        <ManagementBookings router={router}/>
                     </BentoBox>
 
                     {/* Newsletter */}
                     <BentoBox>
-                        <Newsletter />
+                        <Newsletter router={router}/>
                     </BentoBox>
 
                 </div>
@@ -43,14 +49,14 @@ const Information = () => {
             <div className="flex items-center flex-col">
                 <h2 className="text-3xl font-bold">Management</h2>
                 <p className="text-lg">
-                    <strong className="font-bold">AYITA</strong> Brett Fischer (
+
                     <a
                         href="mailto:artistcare@terriblygood.info"
                         className=" hover:underline"
                     >
                         artistcare@terriblygood.info
                     </a>
-                    )
+                    
                 </p>
             </div>
 
@@ -71,7 +77,7 @@ const Information = () => {
     )
 }
 
-const ManagementBookings = () => {
+const ManagementBookings = ({router}: {router:any}) => {
     const [subscripcion, setSubscripcion] = useState<boolean>(false)
 
     const handleSend = async (event: React.FormEvent) => {
@@ -94,11 +100,15 @@ const ManagementBookings = () => {
             console.log(data.message || "Message sent successfully!");
         } else {
             console.log(data.message || "An error occurred while sending the message.");
+            alert(data.message);
+            router.refresh();
         }
 
         if (subscripcion) {
-            handleSubscription(email);
+            handleSubscription(email,router);
         }
+        
+        router.push(`/thankyou?subscribed=${subscripcion}&mensaje=true`)
 
     }
 
@@ -190,7 +200,7 @@ const ManagementBookings = () => {
     );
 };
 
-const Newsletter = () => {
+const Newsletter = ({router}: {router:any}) => {
     const [email, setEmail] = useState<string>()
 
 
@@ -210,7 +220,10 @@ const Newsletter = () => {
             </div>
 
             {/* Formulario */}
-            <form className="flex flex-col md:flex-row gap-4">
+            <form className="flex flex-col md:flex-row gap-4" onSubmit={(e) => {
+                e.preventDefault();
+                handleSubscription(email as string, router)
+            }}>
 
                 {/* Email */}
                 <div className="flex flex-col w-full">
@@ -229,7 +242,7 @@ const Newsletter = () => {
                 {/* Submit */}
                 <div className="flex flex-col justify-end">
                     <button
-                        onClick={() => handleSubscription(email as string)}
+                        // onClick={() => handleSubscription(email as string)}
                         type="submit"
                         className="mt-6 w-full px-6 py-3 bg-(--foreground) border-1 border-gray-300 text-(--background) font-semibold rounded-lg opacity-90 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]"
                     >
@@ -243,23 +256,32 @@ const Newsletter = () => {
     );
 };
 
-const handleSubscription = async (email: string) => {
+const handleSubscription = async (email: string, router:any) => {
+    // const router = useRouter()
 
-    const response = fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email })
-    })
+    try {
+        const response = await fetch("/api/newsletter", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+        
+        const data = await response.json()
 
-
-    response.then(async (res) => {
-        const data = await res.json();
-        if (res.ok) {
-            alert(data.message || "Subscription successful!");
-        } else {
-            alert(data.message || "An error occurred during subscription.");
+        if (response.ok) router.push(`/thankyou?subscribed=true`)
+        if (!response.ok) {
+            // console.error(data.message);
+            // alert(data.message);
+            alert(data.message);
+            router.refresh();    
         }
-    });
+
+        
+    } catch (error) {
+        console.error("An error occurred while subscribing:", error);
+        alert("An error occurred while subscribing. Please try again.");
+        router.refresh();
+    }
 
 
 }
