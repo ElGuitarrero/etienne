@@ -23,7 +23,7 @@ function Navbar({ animate = false, path }: NavbarProps) {
       // { nombre: "home", link: "/" },
       { nombre: "BIO", link: "/bio" },
       { nombre: "MUSIC", link: "/music" },
-      { nombre: "PLAYLISTS", link: "/playlists" },
+      { nombre: "PLAYLISTS", link: "https://open.spotify.com/user/danieletienne?si=PpJRerFUSd60m-TR0E5DPg" },
       // { nombre: "PHOTOS", link: "/photos" },
       { nombre: "CONTACT", link: "/contact" },
       { nombre: "SEND ME MUSIC", link: "https://tstack.app/danieletienne" },

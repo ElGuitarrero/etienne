@@ -16,7 +16,7 @@ const Landing: React.FC = () => {
       // { nombre: "PHOTOS", link: "/photos" },
       { nombre: "CONTACT", link: "/contact" },
       // { nombre: "SEND", link: "https://tstack.app/danieletienne" },
-      { nombre: "PLAYLISTS", link: "/playlists" },
+      { nombre: "PLAYLISTS", link: "https://open.spotify.com/user/danieletienne?si=PpJRerFUSd60m-TR0E5DPg" },
     ],
     []
   );
