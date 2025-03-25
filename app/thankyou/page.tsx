@@ -1,13 +1,10 @@
+import { Suspense } from "react";
 import ThankYou from "@/components/Thankyou";
 
-
-function Index() {
-    
-
+export default function Index() {
     return (
-        <ThankYou/>
-    )
+        <Suspense fallback={<div>Loading...</div>}>
+            <ThankYou />
+        </Suspense>
+    );
 }
-
-
-export default Index;

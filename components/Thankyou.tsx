@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import BentoBox from "./BentoBox";
 import { useSearchParams } from "next/navigation";
