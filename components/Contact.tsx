@@ -32,7 +32,9 @@ const Contact = () => {
 
                     {/* Newsletter */}
                     <BentoBox>
-                        <Newsletter router={router}/>
+                        <div className="flex items-center w-full h-full">
+                            <Newsletter router={router}/>
+                        </div>
                     </BentoBox>
 
                 </div>
@@ -205,7 +207,7 @@ const Newsletter = ({router}: {router:any}) => {
 
 
     return (
-        <div className="space-y-6 text-(--foreground)">
+        <div className="space-y-6 text-(--foreground) w-full flex flex-col">
 
             {/* Titulo */}
             <div>
