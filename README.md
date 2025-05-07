@@ -28,7 +28,7 @@ Built with performance and aesthetic in mind, this site serves as Etienne’s di
 ![Home Screenshot](./public/screenshots/home.png)
 
 ### 📱 Mobile View  
-![Mobile Screenshot](./public/screenshots/mobile.png)
+<img src="./public/screenshots/mobile.png" alt="Mobile Screenshot" style="max-width: 30%;">
 
 ### 🎵 Music Player Section  
 ![Music Player Screenshot](./public/screenshots/musicplayer.png)
